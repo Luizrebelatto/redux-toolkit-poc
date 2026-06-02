@@ -37,7 +37,35 @@ function userReducer(state = initialState, action: any) {
 - Workflow immer
 <img width="836" height="360" alt="Screenshot 2026-06-01 at 23 00 04" src="https://github.com/user-attachments/assets/a6e7df16-d661-4e64-94b5-4749a4f9cbe0" />
 
+### Producer
+- These are the signatures hidden beneath Immer's work
+- The Immer package exposes a produce function that does all the work
 
-- Immer has the current state, a draft is created where the changes are made, and after it finishes, it returns.
-- After the reducer finishes, the value is deleted.
+```javascript
+produce(baseState, recipe: (draftState) => void): nextState
+```
+
+##### How Producer works
+- createSlice use createReducer
+- create reducer use produce
+
+
+```javascript
+import { produce } from "immer";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "user/setName":
+      return produce(
+        state,
+        draft => {
+          draft.name = action.payload;
+        }
+      );
+
+    default:
+      return state;
+  }
+}
+```
 
