@@ -42,7 +42,7 @@ export default function Home() {
       ) : isError ? (
         <View style={styles.center}>
           <Text style={styles.error}>Error to loading</Text>
-          <Button title="Tentar novamente" onPress={() => refetch()} />
+          <Button title="Try again" onPress={() => refetch()} />
         </View>
       ) : (
         <FlatList
