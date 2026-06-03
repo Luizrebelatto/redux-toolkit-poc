@@ -5,7 +5,7 @@ export type EpisodeResponse = {
 
 interface Info {
     count: number;
-    pages: 3;
+    pages: number;
     next: string | null;
     prev: string | null;
 }
